@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { Accordion, Tabs } from 'flowbite-react';
 import { FaPlane, FaCarAlt } from 'react-icons/fa';
 import FlightQuestionaire from '../components/Flight/FlightQuestionaire';
+import VehicleQuestionaire from '../components/Vehicle/VehicleQuestionaire';
 import wateringPlantsImage from '../assets/images/watering-plants-removebg-preview 1.png';
 import Image from 'next/image';
 
@@ -27,8 +28,7 @@ export default function TravelPage() {
             <FlightQuestionaire />
           </Tabs.Item>
           <Tabs.Item title="Driving" icon={FaCarAlt}>
-            <p>Your Driving parent component here</p>
-            <FlightQuestionaire />
+            <VehicleQuestionaire />
           </Tabs.Item>
         </Tabs.Group>
       </div>

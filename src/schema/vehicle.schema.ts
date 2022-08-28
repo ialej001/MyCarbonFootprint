@@ -8,10 +8,24 @@ export const unregisteredVehicleRequestSchema = z.object({
   vehicle_model_id: z.string(),
 });
 
+const vehicleMakeSchema = z.object({
+  name: z.string(),
+  number_of_models: z.number()
+})
+
+
+const vehicleModelSchema = z.object({
+  name: z.string(),
+  year: z.number(),
+  vehicle_make: z.string()
+})
+
 export type DistanceUnit = z.TypeOf<typeof distanceUnitSchema>;
+export type VehicleModel = z.TypeOf<typeof vehicleModelSchema>;
+export type VehicleMake = z.TypeOf<typeof vehicleMakeSchema>;
 
 export type UnregisteredVehicleRequest = z.TypeOf<
-  typeof unregisteredVehicleRequestSchema
+typeof unregisteredVehicleRequestSchema
 >;
 
 const vehicleResponseUnique = z.object({
@@ -27,6 +41,20 @@ const vehicleResponseUnique = z.object({
 
 const vehicleResponseSchema = unregisteredVehicleRequestSchema.merge(
   vehicleResponseUnique
-);
+  );
+  
+const vehicleMakeResponseSchema = z.object({
+    id: z.string(),
+    type: z.string(),
+    attributes: vehicleMakeSchema
+  })
+  
+const vehicleModelResponseSchema = z.object({
+    id: z.string(),
+    type: z.string(),
+    attributes: vehicleModelSchema
+  })
 
 export type VehicleResponse = z.TypeOf<typeof vehicleResponseSchema>;
+export type VehicleMakeResponse = z.TypeOf<typeof vehicleMakeResponseSchema>;
+export type VehicleModelResponse = z.TypeOf<typeof vehicleModelResponseSchema>;
