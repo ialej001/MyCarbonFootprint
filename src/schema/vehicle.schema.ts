@@ -13,6 +13,11 @@ const vehicleMakeSchema = z.object({
   number_of_models: z.number()
 })
 
+const vehicleMakeSearchSchema = z.object({
+  name: z.string(),
+  value: z.string()
+})
+
 
 const vehicleModelSchema = z.object({
   name: z.string(),
@@ -20,9 +25,16 @@ const vehicleModelSchema = z.object({
   vehicle_make: z.string()
 })
 
+const vehicleModelSearchSchema = z.object({
+  name: z.string(),
+  value: z.string()
+})
+
 export type DistanceUnit = z.TypeOf<typeof distanceUnitSchema>;
 export type VehicleModel = z.TypeOf<typeof vehicleModelSchema>;
 export type VehicleMake = z.TypeOf<typeof vehicleMakeSchema>;
+export type VehicleMakeSearch = z.TypeOf<typeof vehicleMakeSearchSchema>;
+export type VehicleModelSearch = z.TypeOf<typeof vehicleModelSearchSchema>;
 
 export type UnregisteredVehicleRequest = z.TypeOf<
 typeof unregisteredVehicleRequestSchema
@@ -43,18 +55,28 @@ const vehicleResponseSchema = unregisteredVehicleRequestSchema.merge(
   vehicleResponseUnique
   );
   
-const vehicleMakeResponseSchema = z.object({
+  const vehicleMakeResponseSchema = z.object({
     id: z.string(),
     type: z.string(),
     attributes: vehicleMakeSchema
   })
   
-const vehicleModelResponseSchema = z.object({
+  const vehicleMakeDataResponseSchema = z.object({
+    data: vehicleMakeResponseSchema
+  })
+  
+  const vehicleModelResponseSchema = z.object({
     id: z.string(),
     type: z.string(),
     attributes: vehicleModelSchema
   })
+  
+  const vehicleModelDataResponseSchema = z.object({
+    data: vehicleModelResponseSchema
+  })
 
 export type VehicleResponse = z.TypeOf<typeof vehicleResponseSchema>;
 export type VehicleMakeResponse = z.TypeOf<typeof vehicleMakeResponseSchema>;
+export type VehicleMakeDataResponse = z.TypeOf<typeof vehicleMakeDataResponseSchema>;
 export type VehicleModelResponse = z.TypeOf<typeof vehicleModelResponseSchema>;
+export type VehicleModelDataResponse = z.TypeOf<typeof vehicleModelDataResponseSchema>;
