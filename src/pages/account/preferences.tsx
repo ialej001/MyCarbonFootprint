@@ -86,7 +86,7 @@ const UserPreferences: NextPageWithLayout = () => {
     if (!session) {
       router.push('/auth/login');
     }
-  }, [session]);
+  }, [router, session]);
 
   if (status === 'loading')
     return (
