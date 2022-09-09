@@ -80,7 +80,7 @@ const UserPreferences: NextPageWithLayout = () => {
       setState(() => (userPreferences.state as string) ?? '');
       setUnitPreference(() => userPreferences.unitPref as UserUnitPreference);
     }
-  }, [userPreferences]);
+  }, [router, userPreferences]);
 
   useEffect(() => {
     if (!session) {
