@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from './Card';
-import car from '../../public/car.png';
-import plane from '../../public/plane.png';
-import house from '../../public/house.png';
+import car from '../../../public/car.png';
+import plane from '../../../public/plane.png';
+import house from '../../../public/house.png';
 
 const Cards = () => {
   const cardInfo = [
@@ -26,7 +26,7 @@ const Cards = () => {
     },
   ];
   return (
-    <div className="w-full p-8 gap-8 flex flex-col justify-center items-center md:flex-row">
+    <div className="w-full px-20 py-8 md:gap-8 gap-3 flex flex-col justify-center items-center md:flex-row">
       {cardInfo.map((card) => (
         <Card
           key={card.id}
